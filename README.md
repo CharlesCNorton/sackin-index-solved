@@ -51,25 +51,25 @@ Full binary trees are central objects in combinatorics, computer science, and ph
 
 ## 3. Problem Statement
 
-Let \(\mathcal{T}_n\) be the set of full binary trees with \( n \) leaves. For a tree \(T \in \mathcal{T}_n\), define the Sackin index as
+Let 𝒯ₙ be the set of full binary trees with 𝑛 leaves. For a tree 𝑇 ∈ 𝒯ₙ, define the Sackin index as
 
-\[
-S(T) = \sum_{\ell \in \text{Leaves}(T)} \text{depth}(\ell),
-\]
+```
+S(T) = ∑_{ℓ ∈ Leaves(T)} depth(ℓ),
+```
 
-with the convention that the root has depth 0. Our objective is to determine a closed–form generating function
+with the convention that the root has depth 0. Our objective is to determine a closed-form generating function
 
-\[
-F_S(x) = \sum_{n\ge1} S(n)\,x^n,
-\]
+```
+F_S(x) = ∑_{n≥1} S(n) xⁿ,
+```
 
 where
 
-\[
-S(n)=\sum_{T\in\mathcal{T}_n}S(T)
-\]
+```
+S(n) = ∑_{T∈𝒯ₙ} S(T)
+```
 
-denotes the total Sackin index over all trees with \( n \) leaves.
+denotes the total Sackin index over all trees with 𝑛 leaves.
 
 ---
 
