@@ -45,3 +45,12 @@ Proof.
   rewrite H1, H2.
   ring.
 Qed.
+
+Fixpoint sum_f (n : nat) (f : nat -> nat) : nat :=
+  match n with
+  | 0 => 0
+  | S n' => f n + sum_f n' f
+  end.
+
+Definition sum_range (n : nat) (f : nat -> nat) : nat :=
+  sum_f (n - 1) (fun i => f (S i)).
