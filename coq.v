@@ -33,3 +33,15 @@ Proof.
   - (* Inductive case: t = Node l r *)
     simpl. rewrite IHl, IHr. lia.
 Qed.
+
+Lemma sackin_Node: forall (l r: full_tree),
+  sackin (Node l r) = sackin l + sackin r + num_leaves l + num_leaves r.
+Proof.
+  intros l r.
+  unfold sackin.
+  simpl.
+  assert (H1: sackin_aux l 1 = sackin_aux l 0 + num_leaves l) by apply sackin_aux_succ.
+  assert (H2: sackin_aux r 1 = sackin_aux r 0 + num_leaves r) by apply sackin_aux_succ.
+  rewrite H1, H2.
+  ring.
+Qed.
