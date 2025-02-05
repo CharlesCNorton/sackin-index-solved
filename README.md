@@ -9,9 +9,9 @@ February 5th, 2025
 ## Abstract
 
 We present a closed–form generating function for the Sackin index, a fundamental measure of tree imbalance defined as the sum of the depths of all leaves in a full binary tree. Building on our previous work, *"Discovery of Closed–Form Generating Functions for Tree Invariants"* [1], we derive and rigorously verify the generating function  
-\[
-F_S(x)=\frac{x\,(1-\sqrt{1-4x})}{1-4x}\,,
-\]  
+
+𝐹ₛ(𝑥) = 𝑥(1 − √(1 − 4𝑥)) / (1 − 4𝑥)
+
 which exactly encodes the total Sackin index \( S(n) \) over all full binary trees with \( n \) leaves. We demonstrate that the candidate generating function perfectly reproduces the recurrence–based and brute–force computed values for \( S(n) \) (for \( n \) up to 15) and discuss its asymptotic implications. We also include all our verification code and extensive discussions. As an aside, we note that our next paper will provide a “meta solution” that decomposes our approach into its fundamental components.
 
 ---
