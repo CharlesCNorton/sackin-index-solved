@@ -77,15 +77,15 @@ denotes the total Sackin index over all trees with 𝑛 leaves.
 
 ### 4.1 Recursive Decomposition of Full Binary Trees
 
-Every full binary tree with \( n \ge 2 \) leaves can be uniquely decomposed into two full binary trees with \( i \) and \( n-i \) leaves (for \( 1\le i\le n-1 \)), attached at a common root. In this decomposition, every leaf’s depth increases by 1, thereby contributing an additive term of \( n \) to the Sackin index. This observation provides the foundation for a recurrence relation.
+Every full binary tree with \( n \ge 2 \) leaves can be uniquely decomposed into two full binary trees with \( i \) and \( n-i \) leaves (for \( 1 \le i \le n-1 \)), attached at a common root. In this decomposition, every leaf’s depth increases by 1, thereby contributing an additive term of \( n \) to the Sackin index. This observation provides the foundation for a recurrence relation.
 
 ### 4.2 Translation to Generating Functions
 
-Let \( T(n) \) denote the number of full binary trees with \( n \) leaves; it is known that \( T(1)=1 \) and for \( n\ge2 \), \( T(n) \) is given by the \((n-1)\)th Catalan number. The generating function for these trees is
+Let \( T(n) \) denote the number of full binary trees with \( n \) leaves; it is known that \( T(1)=1 \) and for \( n \ge 2 \), \( T(n) \) is given by the \((n-1)\)th Catalan number. The generating function for these trees is
 
-\[
-T(x)=\frac{1-\sqrt{1-4x}}{2}.
-\]
+```
+T(x) = (1 − √(1 − 4x)) / 2.
+```
 
 By translating the recursive decomposition into generating function terms, one obtains a functional equation for \( F_S(x) \).
 
@@ -93,9 +93,9 @@ By translating the recursive decomposition into generating function terms, one o
 
 A careful algebraic manipulation of the recurrence yields a candidate generating function for the Sackin index. Specifically, one obtains
 
-\[
-F_S(x)=\frac{x\,(1-\sqrt{1-4x})}{1-4x}\,.
-\]
+```
+F_S(x) = x(1 − √(1 − 4x)) / (1 − 4x).
+```
 
 The derivation parallels that of our previous work [1] but is uniquely adapted to account for the depth increment contributed by each new root. We now detail this derivation.
 
@@ -104,14 +104,17 @@ The derivation parallels that of our previous work [1] but is uniquely adapted t
 ## 5. Derivation of the Closed–Form Generating Function for the Sackin Index
 
 Starting with the recurrence:
-\[
-S(1)=0,\quad S(n) = \sum_{i=1}^{n-1}\Bigl[S(i)\,T(n-i) + S(n-i)\,T(i) + n\,T(i)\,T(n-i)\Bigr],
-\]
-we first observe that the term \( n\,T(i)\,T(n-i) \) accounts for the depth increase of every leaf when combining the two subtrees. By converting the recurrence into generating function form and leveraging the identity \( 1-2T(x)=\sqrt{1-4x} \), one eventually solves for \( F_S(x) \) to obtain
 
-\[
-F_S(x)=\frac{x\,(1-\sqrt{1-4x})}{1-4x}\,.
-\]
+```
+S(1) = 0,
+S(n) = ∑_{i=1}^{n-1} [ S(i)T(n-i) + S(n-i)T(i) + nT(i)T(n-i) ].
+```
+
+We first observe that the term \( nT(i)T(n-i) \) accounts for the depth increase of every leaf when combining the two subtrees. By converting the recurrence into generating function form and leveraging the identity \( 1-2T(x)=\sqrt{1-4x} \), one eventually solves for \( F_S(x) \) to obtain
+
+```
+F_S(x) = x(1 − √(1 − 4x)) / (1 − 4x).
+```
 
 The derivation involves standard operations such as series reversion and differentiation, and its details are analogous to our previous derivations [1]. (For brevity, we omit every algebraic manipulation step; interested readers may consult our code and earlier work for the full derivation.)
 
@@ -123,25 +126,28 @@ To rigorously validate our closed–form generating function, we implemented two
 
 ### 6.1 Dynamic Programming Recurrence Verification
 
-We implemented the recurrence
+We implemented the recurrence:
 
-\[
-S(n) = \sum_{i=1}^{n-1}\Bigl[S(i)\,T(n-i)+S(n-i)\,T(i)+ n\,T(i)\,T(n-i)\Bigr]
-\]
-using dynamic programming. Here, \( T(n) \) is computed as the \((n-1)\)th Catalan number. This recurrence was evaluated for \( n=1 \) through \( n=15 \).
+```
+S(n) = ∑_{i=1}^{n-1} [ S(i)T(n-i) + S(n-i)T(i) + nT(i)T(n-i) ].
+```
+
+Here, \( T(n) \) is computed as the \((n-1)\)th Catalan number. This recurrence was evaluated for \( n = 1 \) through \( n = 15 \).
 
 ### 6.2 Brute–Force Tree Generation Verification
 
-In parallel, we generated all full binary trees for small \( n \) (up to \( n=10 \)) using a recursive procedure. For each tree, we computed its Sackin index directly (by summing the depths of its leaves) and then summed over all trees to obtain \( S(n) \).
+In parallel, we generated all full binary trees for small \( n \) (up to \( n = 10 \)) using a recursive procedure. For each tree, we computed its Sackin index directly (by summing the depths of its leaves) and then summed over all trees to obtain \( S(n) \).
 
 ### 6.3 Comparison and Torture–Test Results
 
-The series expansion of our candidate generating function
+The series expansion of our candidate generating function:
 
-\[
-F_S(x)=\frac{x\,(1-\sqrt{1-4x})}{1-4x}
-\]
+```
+F_S(x) = x(1 − √(1 − 4x)) / (1 − 4x).
+```
+
 yielded the following coefficients (which represent \( S(n) \)):
+
 
 | \( n \) | Candidate \( S(n) \) |
 |:-------:|:--------------------:|
